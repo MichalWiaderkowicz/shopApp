@@ -1,20 +1,24 @@
 import styles from './Product.module.scss';
 import clsx from 'clsx';
 import Button from '../Button/Button';
+import PropTypes from 'prop-types';
 
-const Product = props => {
+const Product = (props) => {
+
+const {title, basePrice} = props
+
   return (
     <article className={styles.product}>
       <div className={styles.imageContainer}>
         <img 
           className={styles.image}
-          alt="Kodilla shirt"
+          alt={title}
           src={`${process.env.PUBLIC_URL}/images/products/shirt-kodilla--black.jpg`} />
       </div>
       <div>
         <header>
-          <h2 className={styles.name}>Kodilla shirt</h2>
-          <span className={styles.price}>Price: 20$</span>
+          <h2 className={styles.name}>{title}</h2>
+          <span className={styles.price}>{basePrice}$</span>
         </header>
         <form>
           <div className={styles.sizes}>
@@ -41,6 +45,11 @@ const Product = props => {
       </div>
     </article>
   )
+};
+
+Product.propTypes = {
+  title: PropTypes.string.isRequired,
+  basePrice: PropTypes.number.isRequired
 };
 
 export default Product;
