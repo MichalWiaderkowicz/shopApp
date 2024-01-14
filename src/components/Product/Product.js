@@ -33,7 +33,7 @@ const [ currentSize, setCurrentSize] = useState(sizes[0].name)
             <ul className={styles.choices}>
               {sizes.map((size) => (
                 <li key={size.name}>
-                  <button type="button" className={clsx(currentSize === size.name && styles.active)}></button>
+                  <button type="button" className={clsx(currentSize === size.name && styles.active)} onClick={(e) => setCurrentSize(size.name)}>{size.name}</button>
                 </li>
               ))}
             </ul>
@@ -43,7 +43,7 @@ const [ currentSize, setCurrentSize] = useState(sizes[0].name)
             <ul className={styles.choices}>
             {colors.map((color) => (
               <li key={color}>
-                 <button type="button" className={clsx(prepareColorClassName(color), currentColor === color && styles.active)}></button>
+                 <button type="button" className={clsx(prepareColorClassName(color), currentColor === color && styles.active)} onClick={(e) => setCurrentColor(color)}></button>
               </li>
             ))}
             </ul>
