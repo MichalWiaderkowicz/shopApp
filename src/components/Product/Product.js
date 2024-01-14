@@ -10,7 +10,6 @@ const {title, basePrice, colors, name, sizes,} = props
 
 const [currentColor, setCurrentColor] = useState(colors[0]);
 const [currentSize, setCurrentSize] = useState(sizes[0].name);
-//const [currentPrice, setCurrentPrice] = useState(sizes[0].additionalPrice);
 
   const prepareColorClassName = color => {
     return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
@@ -18,16 +17,23 @@ const [currentSize, setCurrentSize] = useState(sizes[0].name);
 
   const getPrice = () => {
     let sizePrice = sizes.find((element) => element.name === currentSize);
-    //console.log('sizePrice', sizePrice);
     let addPrice = sizePrice.additionalPrice;
-    //console.log('addPrice', addPrice);
     let totalPrice = basePrice + addPrice;
-    //console.log('totalPrice', totalPrice);
     
     return totalPrice;
   };
 
-  return (
+  const cart = e => {
+    e.preventDefault();
+    console.log('Summary',);
+    console.log('==========',);
+    console.log('Name', title);
+    console.log('Price', getPrice());
+    console.log('Size', currentSize);
+    console.log('Color', currentColor);
+  }
+
+ return (
     <article className={styles.product}>
       <div className={styles.imageContainer}>
         <img 
@@ -62,7 +68,7 @@ const [currentSize, setCurrentSize] = useState(sizes[0].name);
             </ul>
           </div>
           <Button className={styles.button}>
-            <span className="fa fa-shopping-cart" />
+            <span className="fa fa-shopping-cart"  onClick={cart}/>
           </Button>
         </form>
       </div>
