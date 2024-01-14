@@ -9,10 +9,23 @@ const Product = (props) => {
 const {title, basePrice, colors, name, sizes,} = props
 
 const [currentColor, setCurrentColor] = useState(colors[0]);
-const [ currentSize, setCurrentSize] = useState(sizes[0].name)
+const [currentSize, setCurrentSize] = useState(sizes[0].name);
+//const [currentPrice, setCurrentPrice] = useState(sizes[0].additionalPrice);
+
   const prepareColorClassName = color => {
     return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
   }
+
+  const getPrice = () => {
+    let sizePrice = sizes.find((element) => element.name === currentSize);
+    //console.log('sizePrice', sizePrice);
+    let addPrice = sizePrice.additionalPrice;
+    //console.log('addPrice', addPrice);
+    let totalPrice = basePrice + addPrice;
+    //console.log('totalPrice', totalPrice);
+    
+    return totalPrice;
+  };
 
   return (
     <article className={styles.product}>
@@ -25,7 +38,7 @@ const [ currentSize, setCurrentSize] = useState(sizes[0].name)
       <div>
         <header>
           <h2 className={styles.name}>{title}</h2>
-          <span className={styles.price}>{basePrice}$</span>
+          <span className={styles.price}>Price: {getPrice()}$</span>
         </header>
         <form>
           <div className={styles.sizes}>
@@ -60,9 +73,9 @@ const [ currentSize, setCurrentSize] = useState(sizes[0].name)
 Product.propTypes = {
   title: PropTypes.string.isRequired,
   basePrice: PropTypes.number.isRequired,
-  colors: PropTypes.arrayOf(PropTypes.string).isRequired,
+  colors: PropTypes.array.isRequired,
   name: PropTypes.string.isRequired,
-  sizes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  sizes: PropTypes.array.isRequired,
 };
 
 export default Product;
