@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import ProductImage from '../ProductImage/ProductImage.js';
 
 const Product = (props) => {
 
@@ -35,12 +36,7 @@ const [currentSize, setCurrentSize] = useState(sizes[0].name);
 
  return (
     <article className={styles.product}>
-      <div className={styles.imageContainer}>
-        <img 
-          className={styles.image}
-          alt={title}
-          src={`${process.env.PUBLIC_URL}/images/products/shirt-${name}--${currentColor}.jpg`} />
-      </div>
+      <ProductImage name={name} title={title} currentColor={currentColor} />
       <div>
         <header>
           <h2 className={styles.name}>{title}</h2>
