@@ -24,7 +24,7 @@ const [currentSize, setCurrentSize] = useState(sizes[0].name);
     console.log('Summary',);
     console.log('==========',);
     console.log('Name', title);
-    console.log('Price', price());
+    console.log('Price', price);
     console.log('Size', currentSize);
     console.log('Color', currentColor);
   }
