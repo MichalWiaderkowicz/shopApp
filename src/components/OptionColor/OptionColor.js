@@ -4,7 +4,10 @@ import styles from '../OptionColor/OptionColor.module.scss';
 
 
 
-const OptionColor = ({prepareColorClassName, currentColor, setCurrentColor, colors }) => {
+const OptionColor = ({ currentColor, setCurrentColor, colors }) => {
+  const prepareColorClassName = color => {
+    return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
+  }
 
     return (
         <div className={styles.colors}>
@@ -21,7 +24,6 @@ const OptionColor = ({prepareColorClassName, currentColor, setCurrentColor, colo
 }
 
 OptionColor.propTypes = {
-    prepareColorClassName: PropTypes.func.isRequired,
     colors: PropTypes.array.isRequired,
     currentColor: PropTypes.string.isRequired, 
     setCurrentColor: PropTypes.func.isRequired

@@ -4,11 +4,7 @@ import PropTypes from 'prop-types';
 import OptionColor from '../OptionColor/OptionColor.js';
 import OptionSize from '../OptionSize/OptionSize.js';
 
-const ProductForm = ({ cart, colors, sizes, currentColor, currentSize, setCurrentColor, setCurrentSize,}) => {
-    const prepareColorClassName = color => {
-        return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
-      }
-
+const ProductForm = ({ cart, colors, sizes, currentColor, currentSize, setCurrentColor, setCurrentSize, prepareColorClassName }) => {
       return (
         <form>
           <OptionSize sizes={sizes} currentSize={currentSize} setCurrentSize={setCurrentSize} />
