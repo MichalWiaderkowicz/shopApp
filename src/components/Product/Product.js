@@ -1,20 +1,15 @@
 import styles from './Product.module.scss';
-import clsx from 'clsx';
-import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import ProductImage from '../ProductImage/ProductImage.js';
+import ProductForm from '../ProductForm/ProductForm.js';
 
 const Product = (props) => {
 
-const {title, basePrice, colors, name, sizes,} = props
+const {title, basePrice, colors, name, sizes, } = props
 
 const [currentColor, setCurrentColor] = useState(colors[0]);
 const [currentSize, setCurrentSize] = useState(sizes[0].name);
-
-  const prepareColorClassName = color => {
-    return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
-  }
 
   const getPrice = () => {
     let sizePrice = sizes.find((element) => element.name === currentSize);
@@ -42,31 +37,7 @@ const [currentSize, setCurrentSize] = useState(sizes[0].name);
           <h2 className={styles.name}>{title}</h2>
           <span className={styles.price}>Price: {getPrice()}$</span>
         </header>
-        <form>
-          <div className={styles.sizes}>
-            <h3 className={styles.optionLabel}>Sizes</h3>
-            <ul className={styles.choices}>
-              {sizes.map((size) => (
-                <li key={size.name}>
-                  <button type="button" className={clsx(currentSize === size.name && styles.active)} onClick={(e) => setCurrentSize(size.name)}>{size.name}</button>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className={styles.colors}>
-            <h3 className={styles.optionLabel}>Colors</h3>
-            <ul className={styles.choices}>
-            {colors.map((color) => (
-              <li key={color}>
-                 <button type="button" className={clsx(prepareColorClassName(color), currentColor === color && styles.active)} onClick={(e) => setCurrentColor(color)}></button>
-              </li>
-            ))}
-            </ul>
-          </div>
-          <Button className={styles.button}>
-            <span className="fa fa-shopping-cart"  onClick={cart}/>
-          </Button>
-        </form>
+        <ProductForm cart={cart} colors={colors} sizes={sizes} currentColor={currentColor} currentSize={currentSize} setCurrentColor={setCurrentColor} setCurrentSize={setCurrentSize} />
       </div>
     </article>
   )
