@@ -1,8 +1,9 @@
 import styles from './ProductForm.module.scss';
-import Button from '../Button/Button';
+import Button from './Button/Button.js';
 import PropTypes from 'prop-types';
-import OptionColor from '../OptionColor/OptionColor.js';
-import OptionSize from '../OptionSize/OptionSize.js';
+import OptionColor from './OptionColor/OptionColor.js'
+
+import OptionSize from './OptionSize/OptionSize.js';
 
 const ProductForm = ({ cart, colors, sizes, currentColor, currentSize, setCurrentColor, setCurrentSize, prepareColorClassName }) => {
       return (

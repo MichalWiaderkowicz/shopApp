@@ -1,11 +1,9 @@
 @use 'sass:math';
-@import '../../styles/settings.scss';
+@import '../../../styles/settings.scss';
 
 .optionLabel {
     margin: $base-size 0;
   }
-  
-  
   
   .sizes .choices button:hover{
     background: rgb(47, 53, 66);
